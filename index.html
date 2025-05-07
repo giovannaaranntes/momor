@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nosso Amor - Entrada</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff0f5;
+      color: #eb0f7d;
+    }
+
+    /* LOGIN SCREEN */
+    .login-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: linear-gradient(to bottom right, #ffd6e8, #ffeaf2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+
+    .login-screen img {
+      max-width: 300px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .login-screen input {
+      padding: 12px 20px;
+      margin: 8px;
+      border: none;
+      border-radius: 25px;
+      width: 250px;
+      font-size: 1em;
+      text-align: center;
+    }
+
+    .login-screen button {
+      margin-top: 12px;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 30px;
+      background-color: #ff99cc;
+      color: #4a0033;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .login-screen button:hover {
+      background-color: #ff66b2;
+    }
+
+    #main-content {
+      display: none;
+    }
+
+    /* MAIN STYLES */
+    header {
+      background: linear-gradient(to right, #f1adc4, #ffd6e8);
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 3.5em;
+      margin: 0;
+      animation: fadeIn 2s ease-in;
+    }
+
+    header h1:last-child {
+      font-size: 1rem;
+      margin-top: 30px;
+    }
+
+    .gallery, .more-gallery {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 40px 20px;
+    }
+
+    .image-container {
+      position: relative;
+      width: 300px;
+      height: 200px;
+    }
+
+    .image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+
+    .image-container:hover img {
+      transform: scale(1.05);
+    }
+
+    .caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.8);
+      color: #eb0f7d;
+      border-radius: 0 0 15px 15px;
+      font-weight: bold;
+      font-size: 1em;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    .image-container:hover .caption {
+      opacity: 1;
+    }
+
+    .text-section, .story-section, .countdown-section {
+      background-color: #ffeaf2;
+      margin: 40px auto;
+      padding: 40px 30px;
+      max-width: 800px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      animation: fadeIn 1.5s ease-in;
+    }
+
+    .text-section p, .story-section p, .countdown-section p {
+      font-size: 1.2em;
+      line-height: 1.6;
+    }
+
+    .story-section:hover::after {
+      content: "";
+      display: block;
+      margin: 20px auto 0;
+      width: 200px;
+      height: 200px;
+      background-image: url('./img/gigi.jpeg');
+      background-size: cover;
+      background-position: center;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .more-photos {
+      display: flex;
+      justify-content: center;
+      margin: 30px 0;
+    }
+
+    .more-photos button {
+      background-color: #ff99cc;
+      color: rgb(59, 57, 59);
+      border: none;
+      padding: 15px 25px;
+      font-size: 1em;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .more-photos button:hover {
+      background-color: #ff66b2;
+    }
+
+    .more-gallery {
+      display: none;
+      animation: fadeIn 1s ease-in;
+    }
+
+    footer {
+      background-color: rgb(255, 224, 237);
+      text-align: center;
+      padding: 20px;
+      font-size: 1em;
+      color: #660033;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TELA DE LOGIN -->
+  <div class="login-screen" id="loginScreen">
+    <img src="./img/zozo e gigi natal.jpeg" alt="Foto de boas-vindas" />
+    <input type="text" id="username" placeholder="Digite seu nome..." />
+    <input type="password" id="password" placeholder="Senha..." />
+    <button onclick="login()">Entrar</button>
+  </div>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <div id="main-content">
+    <header>
+      <h1>08/03/2023</h1>
+      <h1>Obrigado por viver momor, eu te amoio</h1>
+    </header>
+
+    <section class="gallery">
+      <div class="image-container">
+        <img src="./img/zozo e gigi natal.jpeg" alt="Foto 1 do casal">
+        <div class="caption">Nosso primeiro Natal juntinhos na casa da vóvis!🎄❤️</div>
+      </div>
+      <div class="image-container">
+        <img src="./img/3373143a-a2c9-435e-adb0-6593647ef386.jpeg" alt="Foto 2 do casal">
+        <div class="caption">nós e minecraft💚</div>
+      </div>
+      <div class="image-container">
+        <img src="./img/IMG_5116.jpeg" alt="Foto 3 do casal">
+        <div class="caption">fotinho de nossos corpos se unindo💞</div>
+      </div>
+    </section>
+
+    <section class="text-section">
+        <h1>Nosso dia 8...❤️</h1>
+      <p>
+        Hoje celebramos mais um mês dessa história linda que estamos construindo juntos. Agradeço por cada sorriso, cada abraço, cada conversa e cada momento em que você esteve ao meu lado, tornando meus dias mais leves e meu coração mais cheio de amor. É maravilhoso perceber que, mês após mês, o sentimento só cresce, amadurece e se fortalece. Obrigado por ser meu porto seguro, minha paz, meu amor e minha inspiração de todos os dias. Que venham muitos e muitos anos ao seu lado, porque com você, tudo é mais bonito e faz sentido!!
+      </p>
+    </section>
+
+    <section class="story-section">
+      <h2>Motivos para eu te amar</h2>
+      <p>
+        A cada dia que passa, mais motivos surgem para eu te amar, Cada gesto, cada sorriso, cada pequeno momento ao seu lado só reforça o que sinto por você, Aqui estão apenas alguns dos muitos motivos que fazem o meu amor por você crescer a cada instante:
+
+        Seu sorriso: Ele tem o poder de iluminar o meu dia, fazendo até os momentos difíceis se tornarem mais leves.
+        Sua paciência e compreensão: Você sempre me escuta, me entende, e me apoia, mesmo nos dias mais caóticos.
+        Nosso tempo juntos: Cada momento que passamos juntos é único, Seja em silêncio ou em risadas, só o fato de estar ao seu lado já é motivo de alegria.
+        A forma como você me faz sentir amada: Você sempre sabe como me fazer sentir especial, cuidando de mim com tanta ternura e carinho.
+        Sua força e dedicação: Admiro sua determinação em tudo o que faz, Sua força me inspira a ser melhor a cada dia.
+        Te amar é fácil, porque você é a melhor parte dos meus dias... E eu sou imensamente grata por tudo que você representa na minha vida momor!💖 
+      </p>
+    </section>
+
+    <section class="countdown-section">
+      <h2>Contagem Regressiva para o Próximo Aniversário de Namoro</h2>
+      <p id="countdown">Carregando...</p>
+    </section>
+
+    <div class="more-photos">
+      <button id="morePhotosBtn">Ver Mais Fotos</button>
+    </div>
+
+    <section class="more-gallery" id="moreGallery">
+      <div class="image-container">
+        <img src="./img/IMG_4642.jpeg" alt="Foto extra 1">
+        <div class="caption">gigi e sorvete💖</div>
+      </div>
+      <div class="image-container">
+        <img src="./img/IMG_4657.jpeg" alt="Foto extra 2">
+        <div class="caption">posezinha🌸</div>
+      </div>
+      <div class="image-container">
+        <img src="./img/IMG_4677.jpeg" alt="Foto extra 3">
+        <div class="caption">little gigi🥹</div>
+      </div>
+    </section>
+
+    <footer>
+        <p>Com amor, sua gigi ❤️<br>"menos foco e mais ansiedade, te amoio."</p>
+        <p><a href="https://youtu.be/90rIQ5bPY_c?si=1nfnjVuIF2sQIugT" target="_blank" style="color: #660033;">▶️aperte aqui para ouvir minha musiquinha</p>
+        <p><a href="https://youtu.be/ZYG5W2TwVf4?si=suLqQCYki70puhZh" target="_blank" style="color: #660033;">▶️aperte aqui para ouvir nossa musiquinha</a></p>
+      </footer>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script>
+    function login() {
+      const name = document.getElementById("username").value.trim().toLowerCase();
+      const password = document.getElementById("password").value.trim();
+
+      if (name === "enzo monteiro" && password === "080323") {
+        document.getElementById("loginScreen").style.display = "none";
+        document.getElementById("main-content").style.display = "block";
+      } else {
+        alert("Nome ou senha incorretos! 🤭");
+      }
+    }
+
+    function updateCountdown() {
+      const nextDate = new Date('2026-03-08T00:00:00');
+      const now = new Date();
+      const diff = nextDate - now;
+
+      if (diff <= 0) {
+        document.getElementById('countdown').textContent = "Feliz Aniversário de Namoro!";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      document.getElementById('countdown').textContent =
+        `${days} dias, ${hours} horas, ${minutes} minutos e ${seconds} segundos.`;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    document.getElementById("morePhotosBtn").addEventListener("click", function () {
+      const moreGallery = document.getElementById("moreGallery");
+      moreGallery.style.display = "flex";
+      this.style.display = "none";
+    });
+  </script>
+</body>
+</html>
+
+
+
